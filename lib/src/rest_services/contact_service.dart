@@ -20,11 +20,11 @@ class ContactService {
   ContactService(this.baseUrl, this.dio);
 
 
-  Stream<List<Contact>> getContact(String path, {Uri? baseurl}) async* {
+  Stream<List<Contact>> getContact() async* {
     final contacts = LocalStorageManager().getContacts();
     yield contacts;
 
     final apiCall = await RetrofitClient(dio, baseUrl: baseUrl.toString()).getContacts();
-    yield ((apiCall as Success).data) as List<Contact> ;
+    yield apiCall;
   }
 }

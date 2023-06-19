@@ -6,13 +6,5 @@ import 'package:session_wt_backend/src/models/contact.dart';
 import 'package:session_wt_backend/src/rest_services/rest_utils.dart';
 
 void main() async {
-    await Hive.initFlutter();
-    await LocalStorageManager().init();
-    await LocalStorageManager().openBoxes();
 
-    final Stream<List<Contact>> contacts = SessionWtBackendBase().contactService.getContact(contactsPath);
-
-    contacts.listen((event) {
-        print(event);
-    });
 }

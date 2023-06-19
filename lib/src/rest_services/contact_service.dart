@@ -9,6 +9,7 @@
 import 'package:retrofit/http.dart';
 import 'package:session_wt_backend/src/local_storage_services/local_storage_manager.dart';
 import 'package:session_wt_backend/src/models/contact.dart';
+import 'package:session_wt_backend/src/models/model_response.dart';
 import 'package:session_wt_backend/src/rest_services/retrofit_client.dart';
 
 import 'package:dio/dio.dart';
@@ -24,6 +25,6 @@ class ContactService {
     yield contacts;
 
     final apiCall = await RetrofitClient(dio, baseUrl: baseUrl.toString()).getContacts();
-    yield apiCall;
+    yield ((apiCall as Success).data) as List<Contact> ;
   }
 }

@@ -8,9 +8,11 @@
 
 import 'package:retrofit/http.dart';
 import 'package:dio/dio.dart';
+import 'package:session_wt_backend/src/models/model_response.dart';
 import 'package:session_wt_backend/src/rest_services/rest_utils.dart';
 
 import '../models/models.dart';
+import '../models/user_data.dart';
 import 'custom_logger_interceptor.dart';
 
 part 'retrofit_client.g.dart';
@@ -28,6 +30,9 @@ abstract class RetrofitClient {
 
     return _RetrofitClient(dio, baseUrl: baseUrl);
   }
+
+  @GET(loginPath)
+  Future<UserData> login(@Query('email') final String email, @Query('password') final String password);
 
   @GET(contactsPath)
   Future<List<Contact>> getContacts();

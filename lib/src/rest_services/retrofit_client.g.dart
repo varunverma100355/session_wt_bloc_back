@@ -19,6 +19,35 @@ class _RetrofitClient implements RetrofitClient {
   String? baseUrl;
 
   @override
+  Future<UserData> login(
+    String email,
+    String password,
+  ) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'email': email,
+      r'password': password,
+    };
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result =
+        await _dio.fetch<Map<String, dynamic>>(_setStreamType<UserData>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'login',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = UserData.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
   Future<List<Contact>> getContacts() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};

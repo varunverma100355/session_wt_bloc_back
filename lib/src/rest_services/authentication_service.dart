@@ -6,8 +6,17 @@
  *
 */
 
+import 'package:retrofit/http.dart';
+import 'package:session_wt_backend/src/local_storage_services/local_storage_manager.dart';
+import 'package:session_wt_backend/src/models/contact.dart';
+import 'package:session_wt_backend/src/rest_services/retrofit_client.dart';
+
+import 'package:dio/dio.dart';
 
 class AuthenticationService {
-  final Uri baseUrl;
-  AuthenticationService(this.baseUrl);
+  final String baseUrl;
+  final Dio dio;
+  AuthenticationService(this.baseUrl, this.dio);
+
+
 }

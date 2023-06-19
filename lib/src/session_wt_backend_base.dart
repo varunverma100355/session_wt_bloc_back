@@ -7,14 +7,21 @@
 */
 
 
-import 'dart:io';
-
+import 'package:hive_flutter/adapters.dart';
 import 'package:session_wt_backend/src/rest_services/contact_service.dart';
 import 'package:session_wt_backend/src/rest_services/rest_utils.dart';
 import 'package:dio/dio.dart';
 
-class SessionWtBackendBase{
+import 'local_storage_services/local_storage_manager.dart';
+
+class SessionWtBackendBase {
 
   final ContactService contactService = ContactService(baseUrl, Dio());
+
+  void initialize() async {
+    await Hive.initFlutter();
+    await LocalStorageManager().init();
+    await LocalStorageManager().openBoxes();
+  }
 
 }

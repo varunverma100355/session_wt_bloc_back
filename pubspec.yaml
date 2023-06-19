@@ -1,0 +1,25 @@
+name: session_wt_backend
+description: A Netwok and Local database managment plugin for my session_wt_bloc project
+version: 1.0.0
+
+environment:
+  sdk: '>=2.18.2 <3.0.0'
+
+dependencies:
+   http:
+   json_annotation:
+   equatable:
+   hive:
+   hive_flutter:
+   path_provider:
+   retrofit:
+
+dev_dependencies:
+  lints:
+  test:
+  json_serializable:
+  build_runner:
+  hive_generator:
+  retrofit_generator:
+
+

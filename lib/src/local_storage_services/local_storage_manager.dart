@@ -22,9 +22,12 @@ class LocalStorageManager {
   static final LocalStorageManager _instance = LocalStorageManager.internal();
   factory LocalStorageManager() => LocalStorageManager.internal();
 
-  bool get isAuthenticated {
+  UserData? get isAuthenticated {
     final userDataBox = Hive.box(userDataHiveBox);
-    return userDataBox.isNotEmpty;
+    if (userDataBox.isNotEmpty) {
+      return userDataBox.getAt(0) as UserData;
+    }
+    return null;
   }
 
   Future<void> init() async {

@@ -8,6 +8,7 @@
 
 
 import 'package:hive_flutter/adapters.dart';
+import 'package:session_wt_backend/src/rest_services/authentication_service.dart';
 import 'package:session_wt_backend/src/rest_services/contact_service.dart';
 import 'package:session_wt_backend/src/rest_services/rest_utils.dart';
 import 'package:dio/dio.dart';
@@ -17,6 +18,7 @@ import 'local_storage_services/local_storage_manager.dart';
 class SessionWtBackendBase {
 
   final ContactService contactService = ContactService(baseUrl, Dio());
+  final AuthenticationService authenticationService = AuthenticationService(baseUrl, Dio());
 
   void initialize() async {
     await Hive.initFlutter();

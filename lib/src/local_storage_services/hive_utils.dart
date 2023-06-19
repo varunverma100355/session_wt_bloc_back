@@ -9,3 +9,4 @@
 library hive_utils;
 
 const String contactHiveBox = "CONTACT_HIVE_BOX_101";
+const String userDataHiveBox = "USER_DATA_HIVE_BOX_102";

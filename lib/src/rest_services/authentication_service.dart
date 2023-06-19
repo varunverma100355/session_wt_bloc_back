@@ -7,6 +7,7 @@
 */
 
 
+import 'package:session_wt_backend/src/local_storage_services/local_storage_manager.dart';
 import 'package:session_wt_backend/src/models/user_data.dart';
 import 'package:session_wt_backend/src/rest_services/retrofit_client.dart';
 
@@ -21,6 +22,8 @@ class AuthenticationService {
     final apiCall = await RetrofitClient(dio, baseUrl: baseUrl.toString()).login(email, password);
     return apiCall;
   }
+
+  bool get isAuthenticated => LocalStorageManager().isAuthenticated;
 
 
 }

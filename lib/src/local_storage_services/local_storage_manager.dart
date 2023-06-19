@@ -12,6 +12,7 @@ import 'dart:io';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:session_wt_backend/src/models/models.dart';
+import 'package:session_wt_backend/src/models/user_data.dart';
 
 import 'hive_utils.dart';
 
@@ -21,14 +22,21 @@ class LocalStorageManager {
   static final LocalStorageManager _instance = LocalStorageManager.internal();
   factory LocalStorageManager() => LocalStorageManager.internal();
 
+  bool get isAuthenticated {
+    final userDataBox = Hive.box(userDataHiveBox);
+    return userDataBox.isNotEmpty;
+  }
+
   Future<void> init() async {
     final Directory appPath = await getApplicationDocumentsDirectory();
     Hive.init(appPath.path);
     Hive.registerAdapter(ContactAdapter());
+    Hive.registerAdapter(UserDataAdapter());
   }
 
   Future<void> openBoxes() async {
     Hive.openBox(contactHiveBox);
+    Hive.openBox(userDataHiveBox);
   }
 
   List<Contact> getContacts() {

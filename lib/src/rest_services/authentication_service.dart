@@ -23,6 +23,10 @@ class AuthenticationService {
     return apiCall;
   }
 
+  Future<void> logoutUser() async {
+    // TODO
+  }
+
   UserData? get getAuthenticatedUser => LocalStorageManager().getAuthenticatedUser;
 
 

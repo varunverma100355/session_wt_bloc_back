@@ -22,8 +22,7 @@ class SessionWtBackendBase {
 
   void initialize() async {
     await Hive.initFlutter();
-    await LocalStorageManager().init();
-    await LocalStorageManager().openBoxes();
+    await LocalStorageManager().init().then((_) => LocalStorageManager().openBoxes());
   }
 
 }

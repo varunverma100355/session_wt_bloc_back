@@ -20,7 +20,7 @@ class LocalStorageManager {
 
   LocalStorageManager.internal();
   static final LocalStorageManager _instance = LocalStorageManager.internal();
-  factory LocalStorageManager() => LocalStorageManager.internal();
+  factory LocalStorageManager() => _instance;
 
   UserData? get getAuthenticatedUser {
     final userDataBox = Hive.box(userDataHiveBox);

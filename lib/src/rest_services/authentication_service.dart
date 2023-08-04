@@ -23,7 +23,7 @@ class AuthenticationService {
     return apiCall;
   }
 
-  bool get isAuthenticated => LocalStorageManager().isAuthenticated;
+  UserData? get getAuthenticatedUser => LocalStorageManager().getAuthenticatedUser;
 
 
 }
